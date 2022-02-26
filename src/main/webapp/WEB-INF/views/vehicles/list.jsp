@@ -16,6 +16,8 @@
             <h1>
                 Voitures
                 <a class="btn btn-primary" href="${pageContext.request.contextPath}/createVehicles">Ajouter</a>
+                <a class="btn btn-primary" href="${pageContext.request.contextPath}/editVehicles">Editer</a>
+                <a class="btn btn-primary"  href="${pageContext.request.contextPath}/deleteVehicles">Supprimer</a>
             </h1>
         </section>
 
@@ -30,8 +32,6 @@
                                     <th style="width: 10px">#</th>
                                     <th>Marque</th>
                                     <th>Nombre de places</th>
-                                    <!--<th>Propriétaire</th>-->
-                                    <th>Action</th>
                                 </tr>
                                 <tr>
 
@@ -39,17 +39,6 @@
                                     <td>${vehicle.id}</td>
                                     <td>${vehicle.constructeur}</td>
                                     <td>${vehicle.nb_places}</td>
-                                    <td>
-                                        <a class="btn btn-primary enabled" href="car-detail.html">
-                                            <i class="fa fa-play"></i>
-                                        </a>
-                                        <a class="btn btn-success enabled" href="#">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a class="btn btn-danger enabled"  id="DeleteVehicles" href="#">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </td>
                                 </tr>
                                 </c:forEach>
                             </table>

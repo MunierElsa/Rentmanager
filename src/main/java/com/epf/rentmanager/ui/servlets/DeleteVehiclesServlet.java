@@ -12,8 +12,8 @@ import com.epf.rentmanager.exception.ServiceException;
 import com.epf.rentmanager.model.Vehicle;
 import com.epf.rentmanager.service.VehicleService;
 
-@WebServlet("/createVehicles")
-public class AddVehiclesServlet extends HttpServlet{
+@WebServlet("/deleteVehicles")
+public class DeleteVehiclesServlet extends HttpServlet{
 	
 	VehicleService vehicleService = VehicleService.getInstance();
 	Vehicle vehiculeadd = new Vehicle();
@@ -22,35 +22,23 @@ public class AddVehiclesServlet extends HttpServlet{
 			response) throws ServletException, IOException {
 		
 			
-			request.getRequestDispatcher("./WEB-INF/views/vehicles/create.jsp").forward(request, response);
+			request.getRequestDispatcher("./WEB-INF/views/vehicles/delete.jsp").forward(request, response);
 				
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
 		
-			String constructeur = request.getParameter("manufacturer");
-			String nb_places = request.getParameter("seats");
-			
-			vehiculeadd.setConstructeur(constructeur);
-			vehiculeadd.setNb_places(Short.valueOf(nb_places));
+			String delete_id = request.getParameter("id");
 			
 			try {
-				int id = 0;
-				for(int i = 0; i < vehicleService.findAll().size(); ++i) {
-					if(id < vehicleService.findAll().get(i).getId()) {
-						id = vehicleService.findAll().get(i).getId();
-					} else ;
-				}
-				vehiculeadd.setId(id);
-				request.setAttribute("CreateVehicles",this.vehicleService.create(vehiculeadd));	
 				
+				request.setAttribute("DeleteVehicles",this.vehicleService.delete(vehicleService.findById(Short.parseShort(delete_id))));
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
 			}
 			doGet(request,response);
 			
 	}
-
 
 }
