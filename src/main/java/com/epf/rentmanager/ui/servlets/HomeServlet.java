@@ -28,7 +28,6 @@ private static final long serialVersionUID = 1L;
 				request.setAttribute("listReservations",this.vehicleService.findAllResa().size());
 				request.getRequestDispatcher("./WEB-INF/views/home.jsp").forward(request, response);
 			} catch (ServiceException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			

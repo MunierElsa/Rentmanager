@@ -79,6 +79,18 @@ public class VehicleService {
 		
 	}
 	
+	public long edit(Vehicle vehicle) throws ServiceException {
+		// TODO: éditer un véhicule
+		try {
+			return this.vehicleDao.edit(vehicle);
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+		
+	}
+	
 	/*Partie Reservation*/
 	
 	public long createResa(Reservation reservation) throws ServiceException {

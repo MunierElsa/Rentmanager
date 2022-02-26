@@ -39,8 +39,7 @@ public class EditVehicles extends HttpServlet{
 			
 			
 			try {
-				request.setAttribute("EditVehicles",this.vehicleService.delete(vehicleService.findById(Short.parseShort(id))));
-				request.setAttribute("EditVehicles",this.vehicleService.create(vehiculeedit));	
+				request.setAttribute("EditVehicles",this.vehicleService.edit(vehiculeedit));	
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
 			}
