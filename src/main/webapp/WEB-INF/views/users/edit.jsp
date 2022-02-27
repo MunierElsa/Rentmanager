@@ -27,6 +27,18 @@
                         <!-- form start -->
                         <form class="form-horizontal" method="post">
                             <div class="box-body">
+                            <div class="form-group">
+                                    <label for="id" class="col-sm-2 control-label">Id</label>
+
+									<!-- Pour rï¿½upï¿½rer la valeur rentrï¿½e dans un champ input de cette jsp au niveau de votre servlet -->
+									<!-- vous devez passer par les methodes getParameter de l'objet request, est spï¿½cifiant la valeur -->
+									<!-- de l'attribut "name" de l'input -->
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="id" name="id" placeholder="Id" required>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Modifications : </label></div> 
+                                <div class="form-group"><p STYLE="padding:0 0 0 100px;">(Remettez la même valeur si vous ne souhaitez pas modifier un des paramètres)</p></div>
                                 <div class="form-group">
                                     <label for="last_name" class="col-sm-2 control-label">Nom</label>
 
@@ -58,7 +70,7 @@
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-info pull-right" id="CreateUsers" href="/user">Ajouter</button>
+                                <button type="submit" class="btn btn-info pull-right" id="EditUsers" href="/user">Modifier</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>

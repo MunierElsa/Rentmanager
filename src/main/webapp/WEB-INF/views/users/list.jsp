@@ -16,6 +16,8 @@
             <h1>
                 Utilisateurs
                 <a class="btn btn-primary" href="${pageContext.request.contextPath}/createUsers">Ajouter</a>
+                <a class="btn btn-primary" href="${pageContext.request.contextPath}/editUsers">Editer</a>
+                <a class="btn btn-primary"  href="${pageContext.request.contextPath}/deleteUsers">Supprimer</a>
             </h1>
         </section>
 
@@ -32,7 +34,6 @@
                                     <th>Prenom</th>
                                     <th>Email</th>
                                     <th>Date de naissance</th>
-                                    <th>Action</th>
                                 </tr>
                                 <c:forEach items = "${listUsers }" var="user">
                                 	<tr>
@@ -41,17 +42,6 @@
                                     	<td>${user.prenom}</td>
                                     	<td>${user.email}</td>
                                     	<td>${user.naissance}</td>
-                                    	<td>
-                                        <a class="btn btn-primary disabled" href="car-detail.html">
-                                            <i class="fa fa-play"></i>
-                                        </a>
-                                        <a class="btn btn-success disabled" href="#">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a class="btn btn-danger disabled" href="#">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </td>
                                 	</tr>
                                 </c:forEach>
                             </table>

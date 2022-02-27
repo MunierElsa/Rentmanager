@@ -13,7 +13,7 @@ import com.epf.rentmanager.model.Vehicle;
 import com.epf.rentmanager.service.VehicleService;
 
 @WebServlet("/editVehicles")
-public class EditVehicles extends HttpServlet{
+public class EditVehiclesServlet extends HttpServlet{
 	
 	VehicleService vehicleService = VehicleService.getInstance();
 	Vehicle vehiculeedit = new Vehicle();

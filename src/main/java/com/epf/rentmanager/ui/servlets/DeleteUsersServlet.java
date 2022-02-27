@@ -9,18 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.epf.rentmanager.exception.ServiceException;
-import com.epf.rentmanager.service.VehicleService;
+import com.epf.rentmanager.service.ClientService;
 
-@WebServlet("/deleteVehicles")
-public class DeleteVehiclesServlet extends HttpServlet{
+@WebServlet("/deleteUsers")
+public class DeleteUsersServlet extends HttpServlet{
 	
-	VehicleService vehicleService = VehicleService.getInstance();
+	ClientService clientService = ClientService.getInstance();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
 		
 			
-			request.getRequestDispatcher("./WEB-INF/views/vehicles/delete.jsp").forward(request, response);
+			request.getRequestDispatcher("./WEB-INF/views/users/delete.jsp").forward(request, response);
 				
 	}
 	
@@ -29,9 +29,8 @@ public class DeleteVehiclesServlet extends HttpServlet{
 		
 			String delete_id = request.getParameter("id");
 			
-			try {
-				
-				request.setAttribute("DeleteVehicles",this.vehicleService.delete(vehicleService.findById(Short.parseShort(delete_id))));
+			try {				
+				request.setAttribute("DeleteUsers",this.clientService.delete(clientService.findById(Short.parseShort(delete_id))));
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
 			}
