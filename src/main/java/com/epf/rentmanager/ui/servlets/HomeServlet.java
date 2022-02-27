@@ -23,9 +23,9 @@ private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
 			try {
-				request.setAttribute("listUsers",this.clientService.findAll().size());
-				request.setAttribute("listVehicles",this.vehicleService.findAll().size());
-				request.setAttribute("listReservations",this.vehicleService.findAllResa().size());
+				request.setAttribute("listUsers",this.clientService.count());
+				request.setAttribute("listVehicles",this.vehicleService.count());
+				request.setAttribute("listReservations",this.vehicleService.countResa());
 				request.getRequestDispatcher("./WEB-INF/views/home.jsp").forward(request, response);
 			} catch (ServiceException e) {
 				e.printStackTrace();

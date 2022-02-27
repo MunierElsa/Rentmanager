@@ -30,6 +30,7 @@ public class VehicleDao {
 	private static final String FIND_VEHICLE_QUERY = "SELECT id, constructeur, nb_places FROM Vehicle WHERE id=?;";
 	private static final String FIND_VEHICLES_QUERY = "SELECT id, constructeur, nb_places FROM Vehicle;";
 	private static final String EDIT_VEHICLES_QUERY = "UPDATE Vehicle SET constructeur = ?, nb_places = ? WHERE id = ?;";
+	private static final String COUNT_VEHICLES_QUERY = "SELECT COUNT(id) AS count FROM Vehicle;";
 	
 	public long create(Vehicle vehicle) throws DaoException {
 		long n = 0;
@@ -132,6 +133,24 @@ public class VehicleDao {
 			e.printStackTrace();
 		}
 		
+		
+		return n;
+	}
+	
+	public int count() throws DaoException {
+		int n = 0;
+		try {
+			
+			Connection conn = ConnectionManager.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(COUNT_VEHICLES_QUERY);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			n= rs.getInt("count");
+			conn.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		return n;
 	}

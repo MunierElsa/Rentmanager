@@ -73,4 +73,16 @@ public class ClientService {
 		
 	}
 	
+	public long count() throws ServiceException {
+		// TODO: récupérer tous les clients
+		try {
+			return this.clientDao.count();
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+		
+	}
+	
 }

@@ -91,6 +91,18 @@ public class VehicleService {
 		
 	}
 	
+	public long count() throws ServiceException {
+		// TODO: compter les véhicules
+		try {
+			return this.vehicleDao.count();
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+		
+	}
+	
 	/*Partie Reservation*/
 	
 	public long createResa(Reservation reservation) throws ServiceException {
@@ -130,7 +142,7 @@ public class VehicleService {
 	}
 	
 	public List<Reservation> findResaByVehicleId(int vehicleId) throws ServiceException {
-		// TODO: récupérer tous les clients
+		// TODO: 
 		try {
 			return this.reservationDao.findResaByVehicleId(vehicleId);
 		} catch (DaoException e) {
@@ -142,7 +154,7 @@ public class VehicleService {
 	}
 	
 	public List<Reservation> findAllResa() throws ServiceException {
-		// TODO: récupérer tous les clients
+		// TODO: récupérer toutes les réservations
 		try {
 			return this.reservationDao.findAll();
 		} catch (DaoException e) {
@@ -150,6 +162,18 @@ public class VehicleService {
 		}
 		
 		return null;
+		
+	}
+	
+	public long countResa() throws ServiceException {
+		// TODO: compter les reservations
+		try {
+			return this.reservationDao.count();
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
 		
 	}
 	
