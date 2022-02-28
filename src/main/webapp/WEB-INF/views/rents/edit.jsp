@@ -25,14 +25,26 @@
                     <!-- Horizontal Form -->
                     <div class="box">
                         <!-- form start -->
-                        <form class="form-horizontal" method="post" action="/rents/create">
+                        <form class="form-horizontal" method="post">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="car" class="col-sm-2 control-label">Voiture</label>
+                                    <label for="id" class="col-sm-2 control-label">Id</label>
+
+									<!-- Pour rï¿½upï¿½rer la valeur rentrï¿½e dans un champ input de cette jsp au niveau de votre servlet -->
+									<!-- vous devez passer par les methodes getParameter de l'objet request, est spï¿½cifiant la valeur -->
+									<!-- de l'attribut "name" de l'input -->
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="id" name="id" placeholder="Id" required>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Modifications : </label></div> 
+                                <div class="form-group"><p STYLE="padding:0 0 0 100px;">(Remettez la même valeur si vous ne souhaitez pas modifier un des paramètres)</p></div>
+                                <div class="form-group">
+                                <label for="car" class="col-sm-2 control-label">Voiture</label>
 
                                     <div class="col-sm-10">
                                         <select class="form-control" id="car" name="car">
-                                        	<c:forEach items = "${listVehicles }" var="vehicle">
+                                        	<c:forEach items = "${listVehicles}" var="vehicle">
                                 				<option value="${vehicle.id}">${vehicle.constructeur} ${vehicle.modele}</option>
                                 			</c:forEach>
                                         </select>
@@ -66,9 +78,10 @@
                                     </div>
                                 </div>
                             </div>
+                                    
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-info pull-right">Ajouter</button>
+                                <button type="submit" class="btn btn-info pull-right" id="EditReservations" href="/rents">Modifier</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>

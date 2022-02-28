@@ -25,14 +25,14 @@
                     <!-- Horizontal Form -->
                     <div class="box">
                         <!-- form start -->
-                        <form class="form-horizontal" method="post" action="/rents/create">
+                        <form class="form-horizontal" method="post">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="car" class="col-sm-2 control-label">Voiture</label>
 
                                     <div class="col-sm-10">
                                         <select class="form-control" id="car" name="car">
-                                        	<c:forEach items = "${listVehicles }" var="vehicle">
+                                        	<c:forEach items = "${listVehicles}" var="vehicle">
                                 				<option value="${vehicle.id}">${vehicle.constructeur} ${vehicle.modele}</option>
                                 			</c:forEach>
                                         </select>
@@ -54,7 +54,7 @@
 
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="begin" name="begin" required
-                                               data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                                               data-inputmask="'alias': 'yyyy-mm-dd'" data-mask>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -62,13 +62,13 @@
 
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="end" name="end" required
-                                               data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                                               data-inputmask="'alias': 'yyyy-mm-dd'" data-mask>
                                     </div>
                                 </div>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-info pull-right" id="CreateReservations" href="/rents">Ajouter</button>
+                                <button type="submit" class="btn btn-info pull-right" id="CreateReservations" href="/rent">Ajouter</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>

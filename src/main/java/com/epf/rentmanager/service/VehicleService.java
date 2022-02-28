@@ -90,9 +90,10 @@ public class VehicleService {
 		try {
 			return this.vehicleDao.count();
 		} catch (DaoException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+			
 		return 0;
 		
 	}
@@ -156,6 +157,18 @@ public class VehicleService {
 		}
 		
 		return null;
+		
+	}
+	
+	public long editResa(Reservation reservation) throws ServiceException {
+		// TODO: éditer un véhicule
+		try {
+			return this.reservationDao.edit(reservation);
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
 		
 	}
 	

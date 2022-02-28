@@ -10,6 +10,7 @@ C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\configuration\WebConfiguration.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\ui\servlets\AddUsersServlet.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\ui\servlets\UserServlet.java
+C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\ui\servlets\EditReservationsServlet.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\persistence\ConnectionManager.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\model\Client.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\dao\ClientDao.java

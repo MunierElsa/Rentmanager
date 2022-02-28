@@ -14,16 +14,18 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.epf.rentmanager.exception.ServiceException;
 import com.epf.rentmanager.model.Reservation;
+import com.epf.rentmanager.model.Vehicle;
 import com.epf.rentmanager.service.ClientService;
 import com.epf.rentmanager.service.VehicleService;
 
-@WebServlet("/createReservations")
-public class AddReservationsServlet extends HttpServlet{
+@WebServlet("/editReservations")
+public class EditReservationsServlet extends HttpServlet{
+
 	
 	private static final long serialVersionUID = 1L;
-	
-	Reservation reservationadd = new Reservation();
 
+	Reservation reservationedit = new Reservation();
+	
 	@Autowired
 	private VehicleService vehicleService;
 	@Autowired
@@ -34,53 +36,42 @@ public class AddReservationsServlet extends HttpServlet{
 		super.init();
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
+	Vehicle reservtaionedit = new Vehicle();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
 		
-				try {
-					request.setAttribute("listUsers",this.clientService.findAll());
-					request.setAttribute("listVehicles",this.vehicleService.findAll());
-					request.getRequestDispatcher("./WEB-INF/views/rents/create.jsp").forward(request, response);
-				} catch (ServiceException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
+			request.setAttribute("listUsers",this.clientService.findAll());
+			request.setAttribute("listVehicles",this.vehicleService.findAll());
+			request.getRequestDispatcher("./WEB-INF/views/rents/edit.jsp").forward(request, response);
 				
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
 		
-			String voiture = request.getParameter("car");
-			String client = request.getParameter("client");
-			String debut = request.getParameter("begin");
-			String fin = request.getParameter("end");
+		String id = request.getParameter("id");
+		String voiture = request.getParameter("car");
+		String client = request.getParameter("client");
+		String debut = request.getParameter("begin");
+		String fin = request.getParameter("end");
+		
+		LocalDate debut_date = LocalDate.parse(debut);
+		LocalDate fin_date = LocalDate.parse(fin);
+		
+		reservationedit.setId(Integer.parseInt(id));
+		reservationedit.setClient_id(Integer.parseInt(client));
+		reservationedit.setVehicle_id(Integer.parseInt(voiture));
+		reservationedit.setDebut(debut_date);
+		reservationedit.setDebut(fin_date);
 			
-			LocalDate debut_date = LocalDate.parse(debut);
-			LocalDate fin_date = LocalDate.parse(fin);
-			
-			reservationadd.setClient_id(Integer.parseInt(client));
-			reservationadd.setVehicle_id(Integer.parseInt(voiture));
-			reservationadd.setDebut(debut_date);
-			reservationadd.setFin(fin_date);
 			
 			try {
-				int id = 0;
-				for(int i = 0; i < vehicleService.findAllResa().size(); ++i) {
-					if(id < vehicleService.findAllResa().get(i).getId()) {
-						id = vehicleService.findAllResa().get(i).getId();
-					} else ;
-				}
-				reservationadd.setId(id);
-				request.setAttribute("CreateReservations",this.vehicleService.createResa(reservationadd));	
-				
+				request.setAttribute("EditReservations",this.vehicleService.editResa(reservationedit));	
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
 			}
 			doGet(request,response);
 			
 	}
-
 }
