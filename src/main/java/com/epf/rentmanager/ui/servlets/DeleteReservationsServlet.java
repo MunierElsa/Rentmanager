@@ -12,41 +12,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.epf.rentmanager.exception.ServiceException;
-import com.epf.rentmanager.service.ClientService;
 import com.epf.rentmanager.service.VehicleService;
 
-@WebServlet("/home")
-public class HomeServlet extends HttpServlet{
-	
+@WebServlet("/deleteReservations")
+public class DeleteReservationsServlet extends HttpServlet{
+
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
 	private VehicleService vehicleService;
-	@Autowired
-	private ClientService clientService;
 
-	
-	@Override 
+	@Override
 	public void init() throws ServletException {
 		super.init();
-		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this); 
+		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
-	 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
-			try {
-				request.setAttribute("listUsers",this.clientService.count());
-				request.setAttribute("listVehicles",this.vehicleService.count());
-				request.setAttribute("listReservations",this.vehicleService.countResa());
-				request.getRequestDispatcher("./WEB-INF/views/home.jsp").forward(request, response);
-				
-			} catch (ServiceException e) {
-				e.printStackTrace();
-			}
 		
 			
-			
-			}
+			request.getRequestDispatcher("./WEB-INF/views/rents/delete.jsp").forward(request, response);
+				
+	}
 	
+	protected void doPost(HttpServletRequest request, HttpServletResponse
+			response) throws ServletException, IOException {
+		
+			String delete_id = request.getParameter("id");
+			
+			try {				
+				request.setAttribute("DeleteReservations",this.vehicleService.delete(vehicleService.findById(Short.parseShort(delete_id))));
+			} catch (ServiceException e1) {
+				e1.printStackTrace();
+			}
+			doGet(request,response);
+			
+	}
 }

@@ -13,6 +13,7 @@ C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\persistence\ConnectionManager.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\model\Client.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\dao\ClientDao.java
+C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\ui\servlets\DeleteReservationsServlet.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\ui\servlets\DeleteVehiclesServlet.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\dao\ReservationDao.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\exception\ServiceException.java

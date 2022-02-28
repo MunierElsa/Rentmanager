@@ -16,6 +16,8 @@
             <h1>
                 Reservations
                 <a class="btn btn-primary" href="${pageContext.request.contextPath}/createReservations">Ajouter</a>
+                <a class="btn btn-primary" href="${pageContext.request.contextPath}/editReservations">Editer</a>
+                <a class="btn btn-primary" href="${pageContext.request.contextPath}/deleteReservations">Supprimer</a>
             </h1>
         </section>
 
@@ -32,7 +34,6 @@
                                     <th>Client</th>
                                     <th>Debut</th>
                                     <th>Fin</th>
-                                    <th>Action</th>
                                 </tr>
                                 <c:forEach items = "${listReservations }" var="rent">
                                 	<tr>
@@ -41,17 +42,6 @@
                                     	<td>${rent.client_id}</td>
                                     	<td>${rent.debut}</td>
                                     	<td>${rent.fin}</td>
-                                    	<td>
-                                        <a class="btn btn-primary disabled" href="car-detail.html">
-                                            <i class="fa fa-play"></i>
-                                        </a>
-                                        <a class="btn btn-success disabled" href="#">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a class="btn btn-danger disabled" href="#">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </td>
                                 	</tr>
                                 </c:forEach>
                             </table>

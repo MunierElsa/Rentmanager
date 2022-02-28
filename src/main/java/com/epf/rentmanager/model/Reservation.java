@@ -26,6 +26,10 @@ public class Reservation {
 		return "Reservation [id=" + id + ", client_id=" + client_id + ", vehicle_id=" + vehicle_id + ", debut=" + debut
 				+ ", fin=" + fin + "]";
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public int getId() {
 		return id;

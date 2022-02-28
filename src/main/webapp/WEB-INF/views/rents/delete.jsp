@@ -14,7 +14,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Utilisateurs
+                Reservations
             </h1>
         </section>
 
@@ -25,22 +25,17 @@
                     <!-- Horizontal Form -->
                     <div class="box">
                         <!-- form start -->
-                        <form class="form-horizontal" method="post" >
+                        <form class="form-horizontal" method="post" action="/rents/create">
                             <div class="box-body">
                                 <div class="form-group">
-                                <label for="id" class="col-sm-2 control-label">Id</label>
-
-									<!-- Pour r�up�rer la valeur rentr�e dans un champ input de cette jsp au niveau de votre servlet -->
-									<!-- vous devez passer par les methodes getParameter de l'objet request, est sp�cifiant la valeur -->
-									<!-- de l'attribut "name" de l'input -->
+                                    <label for="id" class="col-sm-2 control-label">Id</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="id" name="id" placeholder="Id" required>
                                     </div>
                                 </div>
-                                
+                            <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-info pull-right" id="DeleteUsers" href="/user">Supprimer</button>
-                                    
+                                <button type="submit" class="btn btn-info pull-right" id="Deletereservations" href="/rents">Supprimer</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>
@@ -58,5 +53,13 @@
 <!-- ./wrapper -->
 
 <%@ include file="/WEB-INF/views/common/js_imports.jsp" %>
+<script src="${pageContext.request.contextPath}/resources/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="${pageContext.request.contextPath}/resources/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="${pageContext.request.contextPath}/resources/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script>
+    $(function () {
+        $('[data-mask]').inputmask()
+    });
+</script>
 </body>
 </html>
