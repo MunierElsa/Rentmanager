@@ -41,9 +41,15 @@ public class EditReservationsServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
 		
-			request.setAttribute("listUsers",this.clientService.findAll());
-			request.setAttribute("listVehicles",this.vehicleService.findAll());
-			request.getRequestDispatcher("./WEB-INF/views/rents/edit.jsp").forward(request, response);
+			try {
+				request.setAttribute("listUsers",this.clientService.findAll());
+				request.setAttribute("listVehicles",this.vehicleService.findAll());
+				request.getRequestDispatcher("./WEB-INF/views/rents/edit.jsp").forward(request, response);
+			} catch (ServiceException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 				
 	}
 	
@@ -63,7 +69,7 @@ public class EditReservationsServlet extends HttpServlet{
 		reservationedit.setClient_id(Integer.parseInt(client));
 		reservationedit.setVehicle_id(Integer.parseInt(voiture));
 		reservationedit.setDebut(debut_date);
-		reservationedit.setDebut(fin_date);
+		reservationedit.setFin(fin_date);
 			
 			
 			try {

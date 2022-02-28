@@ -12,12 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.epf.rentmanager.exception.ServiceException;
+import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.service.VehicleService;
 
 @WebServlet("/deleteReservations")
 public class DeleteReservationsServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
+	
+	Reservation resadelete = new Reservation();
 
 	@Autowired
 	private VehicleService vehicleService;
@@ -40,9 +43,10 @@ public class DeleteReservationsServlet extends HttpServlet{
 			response) throws ServletException, IOException {
 		
 			String delete_id = request.getParameter("id");
+			resadelete.setId(Integer.parseInt(delete_id));
 			
 			try {				
-				request.setAttribute("DeleteReservations",this.vehicleService.delete(vehicleService.findById(Short.parseShort(delete_id))));
+				request.setAttribute("DeleteReservations",this.vehicleService.deleteResa(resadelete));
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
 			}

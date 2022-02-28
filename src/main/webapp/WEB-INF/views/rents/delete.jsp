@@ -25,7 +25,7 @@
                     <!-- Horizontal Form -->
                     <div class="box">
                         <!-- form start -->
-                        <form class="form-horizontal" method="post" action="/rents/create">
+                        <form class="form-horizontal" method="post">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="id" class="col-sm-2 control-label">Id</label>
@@ -35,7 +35,7 @@
                                 </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-info pull-right" id="Deletereservations" href="/rents">Supprimer</button>
+                                <button type="submit" class="btn btn-info pull-right" id="DeleteReservations" href="/rents">Supprimer</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>
