@@ -1,4 +1,4 @@
-package com.epf.rentmanager.ui.servlets;
+package com.epf.rentmanager.ui.servlets.reservation;
 
 import java.io.IOException;
 
@@ -12,14 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.epf.rentmanager.exception.ServiceException;
-import com.epf.rentmanager.model.Vehicle;
-import com.epf.rentmanager.service.ClientService;
+import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.service.VehicleService;
 
-@WebServlet("/createVehicles")
-public class AddVehiclesServlet extends HttpServlet{
-	
+@WebServlet("/deleteReservations")
+public class DeleteReservationsServlet extends HttpServlet{
+
 	private static final long serialVersionUID = 1L;
+	
+	Reservation resadelete = new Reservation();
 
 	@Autowired
 	private VehicleService vehicleService;
@@ -30,41 +31,26 @@ public class AddVehiclesServlet extends HttpServlet{
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
 	
-	Vehicle vehiculeadd = new Vehicle();
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
 		
 			
-			request.getRequestDispatcher("./WEB-INF/views/vehicles/create.jsp").forward(request, response);
+			request.getRequestDispatcher("./WEB-INF/views/rents/delete.jsp").forward(request, response);
 				
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
 		
-			String constructeur = request.getParameter("manufacturer");
-			String nb_places = request.getParameter("seats");
+			String delete_id = request.getParameter("id");
+			resadelete.setId(Integer.parseInt(delete_id));
 			
-			vehiculeadd.setConstructeur(constructeur);
-			vehiculeadd.setNb_places(Short.valueOf(nb_places));
-			
-			try {
-				int id = 0;
-				for(int i = 0; i < vehicleService.findAll().size(); ++i) {
-					if(id < vehicleService.findAll().get(i).getId()) {
-						id = vehicleService.findAll().get(i).getId();
-					} else ;
-				}
-				vehiculeadd.setId(id);
-				request.setAttribute("CreateVehicles",this.vehicleService.create(vehiculeadd));	
-				
+			try {				
+				request.setAttribute("DeleteReservations",this.vehicleService.deleteResa(resadelete));
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
 			}
 			doGet(request,response);
 			
 	}
-
-
 }

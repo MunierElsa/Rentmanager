@@ -1,4 +1,4 @@
-package com.epf.rentmanager.ui.servlets;
+package com.epf.rentmanager.ui.servlets.user;
 
 import java.io.IOException;
 

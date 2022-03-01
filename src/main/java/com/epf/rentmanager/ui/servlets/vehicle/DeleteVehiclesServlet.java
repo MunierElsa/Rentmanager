@@ -1,4 +1,4 @@
-package com.epf.rentmanager.ui.servlets;
+package com.epf.rentmanager.ui.servlets.vehicle;
 
 import java.io.IOException;
 
@@ -15,13 +15,13 @@ import com.epf.rentmanager.exception.ServiceException;
 import com.epf.rentmanager.service.ClientService;
 import com.epf.rentmanager.service.VehicleService;
 
-@WebServlet("/deleteUsers")
-public class DeleteUsersServlet extends HttpServlet{
+@WebServlet("/deleteVehicles")
+public class DeleteVehiclesServlet extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
-	private ClientService clientService;
+	private VehicleService vehicleService;
 
 	@Override
 	public void init() throws ServletException {
@@ -33,7 +33,7 @@ public class DeleteUsersServlet extends HttpServlet{
 			response) throws ServletException, IOException {
 		
 			
-			request.getRequestDispatcher("./WEB-INF/views/users/delete.jsp").forward(request, response);
+			request.getRequestDispatcher("./WEB-INF/views/vehicles/delete.jsp").forward(request, response);
 				
 	}
 	
@@ -42,8 +42,9 @@ public class DeleteUsersServlet extends HttpServlet{
 		
 			String delete_id = request.getParameter("id");
 			
-			try {				
-				request.setAttribute("DeleteUsers",this.clientService.delete(clientService.findById(Short.parseShort(delete_id))));
+			try {
+				
+				request.setAttribute("DeleteVehicles",this.vehicleService.delete(vehicleService.findById(Short.parseShort(delete_id))));
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
 			}

@@ -84,7 +84,7 @@ public class IOUtils {
 	public static LocalDate readDate(String message, boolean mandatory) {
 		print(message);
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         
 		LocalDate output = null;
 		boolean error = false;
@@ -96,7 +96,7 @@ public class IOUtils {
 	        	output = LocalDate.parse(stringDate, formatter);
 	        } catch (DateTimeParseException e) {
 	        	error = true;
-	        	print("Veuillez saisir une date valide (dd/MM/yyyy)");
+	        	print("Veuillez saisir une date valide (yyyy-MM-dd)");
 	        } 
 		} while (error && mandatory);
         
