@@ -40,6 +40,20 @@ public class AddVehiclesServlet extends HttpServlet{
 				
 	}
 	
+	protected void doGet2(HttpServletRequest request, HttpServletResponse
+			response) throws ServletException, IOException {
+		
+			try {
+				request.setAttribute("listVehicles",this.vehicleService.findAll());
+				request.getRequestDispatcher("./WEB-INF/views/vehicles/list.jsp").forward(request, response);
+			} catch (ServiceException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+			
+				
+	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
 		
@@ -62,7 +76,7 @@ public class AddVehiclesServlet extends HttpServlet{
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
 			}
-			doGet(request,response);
+			doGet2(request,response);
 			
 	}
 

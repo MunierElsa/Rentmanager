@@ -40,6 +40,20 @@ public class EditUsersServlet extends HttpServlet{
 				
 	}
 	
+	protected void doGet2(HttpServletRequest request, HttpServletResponse
+			response) throws ServletException, IOException {
+		
+			try {
+				request.setAttribute("listUsers",this.clientService.findAll());
+				request.getRequestDispatcher("./WEB-INF/views/users/list.jsp").forward(request, response);
+			} catch (ServiceException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+			
+				
+	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
 		
@@ -58,12 +72,12 @@ public class EditUsersServlet extends HttpServlet{
 		useredit.setNaissance(date_naissance);
 			
 			
-			try {
-				request.setAttribute("EditUsers",this.clientService.edit(useredit));	
-			} catch (ServiceException e1) {
-				e1.printStackTrace();
-			}
-			doGet(request,response);
+		try {
+			request.setAttribute("EditUsers",this.clientService.edit(useredit));	
+		} catch (ServiceException e1) {
+			e1.printStackTrace();
+		}
+		doGet2(request,response);
 			
 	}
 }

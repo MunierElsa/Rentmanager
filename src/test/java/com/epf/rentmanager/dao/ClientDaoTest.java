@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
 public class ClientDaoTest {
 	
 	@AfterEach
@@ -15,7 +16,29 @@ public class ClientDaoTest {
     }
 
     @Test
-    public void test1(){
+    public void createTest(){
     }
+    
+    @Test
+    public void deleteTest(){
+    }
+    
+    @Test
+    public void findbyIdTest(){
+    }
+    
+    @Test
+    public void findallTest(){
+    }
+    
+    @Test
+    public void editTest(){
+    }
+    
+    @Test
+    public void countTest(){
+    }
+    
+  
 
 }

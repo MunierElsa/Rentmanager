@@ -47,6 +47,19 @@ public class AddReservationsServlet extends HttpServlet{
 					e.printStackTrace();
 				}
 				
+	}
+	
+	protected void doGet2(HttpServletRequest request, HttpServletResponse
+			response) throws ServletException, IOException {
+		
+			try {
+				request.setAttribute("listReservartions",this.vehicleService.findAll());
+				request.getRequestDispatcher("./WEB-INF/views/rents/list.jsp").forward(request, response);
+			} catch (ServiceException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+			
 				
 	}
 	
@@ -79,7 +92,7 @@ public class AddReservationsServlet extends HttpServlet{
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
 			}
-			doGet(request,response);
+			doGet2(request,response);
 			
 	}
 
