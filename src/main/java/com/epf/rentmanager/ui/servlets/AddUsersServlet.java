@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.epf.rentmanager.exception.ServiceException;
@@ -50,7 +51,7 @@ public class AddUsersServlet extends HttpServlet{
 			
 			LocalDate date_naissance = LocalDate.parse(naissance);
 			
-			useradd.setNom(nom);
+			useradd.setNom(nom.toUpperCase());
 			useradd.setPrenom(prenom);
 			useradd.setEmail(email);
 			useradd.setNaissance(date_naissance);
