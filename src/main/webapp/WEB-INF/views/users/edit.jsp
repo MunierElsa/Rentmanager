@@ -62,9 +62,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="naissance" class="col-sm-2 control-label">Date de naissance</label>
-
                                     <div class="col-sm-10">
-                                        <input type="naissance" class="form-control" id="naissance" name="naissance" placeholder="Naissance">
+                                        <input type="text" class="form-control" id="naissance" name="naissance" required
+                                               data-inputmask="'alias': 'yyyy-mm-dd'" data-mask>
                                     </div>
                                 </div>
                             </div>
