@@ -72,7 +72,7 @@ public class AddUsersServlet extends HttpServlet{
 			
 			
 			try {
-				//verifException();
+				verifException();
 				int id = 0;
 				for(int i = 0; i < clientService.findAll().size(); ++i) {
 					if(id < clientService.findAll().get(i).getId()) {
@@ -90,9 +90,9 @@ public class AddUsersServlet extends HttpServlet{
 			
 	}
 	
-	/*private void verifException() throws ServiceException {
-		if (useradd.getNom() == null || useradd.getPrenom() == null) {
+	private void verifException() throws ServiceException {
+		if (useradd.getNom().equals("") || useradd.getPrenom().equals("")) {
 			throw new ServiceException();
 		}
-	}*/
+	}
 }

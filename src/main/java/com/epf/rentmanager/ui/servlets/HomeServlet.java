@@ -43,9 +43,7 @@ public class HomeServlet extends HttpServlet{
 				
 			} catch (ServiceException e) {
 				e.printStackTrace();
-			}
-		
-			
+			}		
 			
 			}
 	

@@ -73,11 +73,18 @@ public class EditUsersServlet extends HttpServlet{
 			
 			
 		try {
+			verifException();
 			request.setAttribute("EditUsers",this.clientService.edit(useredit));	
 		} catch (ServiceException e1) {
 			e1.printStackTrace();
 		}
 		doGet2(request,response);
 			
+	}
+	
+	private void verifException() throws ServiceException {
+		if (useredit.getNom().equals("") || useredit.getPrenom().equals("")) {
+			throw new ServiceException();
+		}
 	}
 }

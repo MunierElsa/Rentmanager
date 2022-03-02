@@ -66,12 +66,19 @@ public class EditVehiclesServlet extends HttpServlet{
 			
 			
 			try {
+				verifException();
 				request.setAttribute("EditVehicles",this.vehicleService.edit(vehiculeedit));	
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
 			}
 			doGet2(request,response);
 			
+	}
+	
+	private void verifException() throws ServiceException {
+		if (vehiculeedit.getConstructeur().equals("") || vehiculeedit.getNb_places() < 1) {
+			throw new ServiceException();
+		}
 	}
 
 }

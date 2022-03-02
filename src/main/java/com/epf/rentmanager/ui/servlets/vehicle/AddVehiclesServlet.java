@@ -30,7 +30,7 @@ public class AddVehiclesServlet extends HttpServlet{
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
 	
-	Vehicle vehiculeadd = new Vehicle();
+	Vehicle vehicleadd = new Vehicle();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
@@ -60,8 +60,8 @@ public class AddVehiclesServlet extends HttpServlet{
 			String constructeur = request.getParameter("manufacturer");
 			String nb_places = request.getParameter("seats");
 			
-			vehiculeadd.setConstructeur(constructeur);
-			vehiculeadd.setNb_places(Short.valueOf(nb_places));
+			vehicleadd.setConstructeur(constructeur);
+			vehicleadd.setNb_places(Short.valueOf(nb_places));
 			
 			try {
 				int id = 0;
@@ -70,8 +70,11 @@ public class AddVehiclesServlet extends HttpServlet{
 						id = vehicleService.findAll().get(i).getId();
 					} else ;
 				}
-				vehiculeadd.setId(id);
-				request.setAttribute("CreateVehicles",this.vehicleService.create(vehiculeadd));	
+				vehicleadd.setId(id);
+				
+				verifException();
+				
+				request.setAttribute("CreateVehicles",this.vehicleService.create(vehicleadd));	
 				
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
@@ -79,6 +82,11 @@ public class AddVehiclesServlet extends HttpServlet{
 			doGet2(request,response);
 			
 	}
-
-
+	
+	private void verifException() throws ServiceException {
+		if (vehicleadd.getConstructeur().equals("") || vehicleadd.getNb_places() < 1) {
+			throw new ServiceException();
+		}
+	}
+	
 }

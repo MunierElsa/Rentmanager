@@ -152,7 +152,7 @@ public class ClientDao {
 			PreparedStatement pstmt = conn.prepareStatement(COUNT_CLIENTS_QUERY);
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
-			n= rs.getInt("count");
+			n = rs.getInt("count");
 			conn.close();
 			
 		} catch (SQLException e) {
