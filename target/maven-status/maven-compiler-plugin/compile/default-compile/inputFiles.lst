@@ -15,10 +15,13 @@ C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\model\Client.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\dao\ClientDao.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\ui\servlets\user\EditUsersServlet.java
+C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\ui\servlets\reservation\FindByIdVehicleReservationServlet.java
+C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\exception\ContrainteException.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\dao\ReservationDao.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\ui\servlets\reservation\DeleteReservationsServlet.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\ui\servlets\reservation\AddReservationsServlet.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\ui\servlets\user\DeleteUsersServlet.java
+C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\ui\servlets\reservation\FindByIdClientReservationsServlet.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\exception\ServiceException.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\ui\servlets\user\UserServlet.java
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\main\java\com\epf\rentmanager\persistence\FillDatabase.java

@@ -14,7 +14,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Voitures
+                Reservations
             </h1>
         </section>
 
@@ -25,45 +25,26 @@
                     <!-- Horizontal Form -->
                     <div class="box">
                         <!-- form start -->
-                        <!-- Le  type de methode http qui sera appelï¿½ lors de action submit du formulaire -->
-                        <!-- est dï¿½crit an l'attribut "method" de la balise forme -->
-                        <!-- action indique ï¿½ quel "cible" sera envoyr la requï¿½te, ici notre Servlet qui sera bind sur -->
-                        <!-- /vehicles/create -->
                         <form class="form-horizontal" method="post">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="manufacturer" class="col-sm-2 control-label">Marque</label>
+                                    <label for="id" class="col-sm-2 control-label">Id du client recherché</label>
 
 									<!-- Pour rï¿½upï¿½rer la valeur rentrï¿½e dans un champ input de cette jsp au niveau de votre servlet -->
 									<!-- vous devez passer par les methodes getParameter de l'objet request, est spï¿½cifiant la valeur -->
 									<!-- de l'attribut "name" de l'input -->
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="manufacturer" name="manufacturer" placeholder="Marque" required>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="seats" class="col-sm-2 control-label">Nombre de places</label>
-
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="seats" name="seats" min="2" max="9" placeholder="Nombre de places" required>
-                                    </div>
-                                </div>
-                                <!--
-                                <div class="form-group">
-                                    <label for="owner" class="col-sm-2 control-label">PropriÃ©taire</label>
-
-                                    <div class="col-sm-10">
-                                        <select class="form-control" id="owner" name="owner">
-                                            <option value="1">John Doe</option>
-                                            <option value="2">Jane Doe</option>
+                                        <select class="form-control" id="id" name="id">
+                                            <c:forEach items = "${listUsers }" var="user">
+                                				<option value="${user.id}">${user.id} - ${user.prenom} ${user.nom}</option>
+                                			</c:forEach>
                                         </select>
                                     </div>
                                 </div>
-                                -->
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-info pull-right" id="CreateVehicles" href="/cars">Ajouter</button>
+                                <button type="submit" class="btn btn-info pull-right" id="FindByIdClientReservations" href="/rents">Chercher</button>
                             </div>
                             <!-- /.box-footer -->
                         </form>
@@ -81,5 +62,13 @@
 <!-- ./wrapper -->
 
 <%@ include file="/WEB-INF/views/common/js_imports.jsp" %>
+<script src="${pageContext.request.contextPath}/resources/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="${pageContext.request.contextPath}/resources/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="${pageContext.request.contextPath}/resources/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script>
+    $(function () {
+        $('[data-mask]').inputmask()
+    });
+</script>
 </body>
 </html>

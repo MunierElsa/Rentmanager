@@ -1,4 +1,4 @@
-package com.epf.rentmanager.ui.servlets.user;
+package com.epf.rentmanager.ui.servlets.reservation;
 
 import java.io.IOException;
 
@@ -12,27 +12,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.epf.rentmanager.exception.ServiceException;
-import com.epf.rentmanager.service.ClientService;
+import com.epf.rentmanager.model.Reservation;
+import com.epf.rentmanager.service.VehicleService;
 
-@WebServlet("/deleteUsers")
-public class DeleteUsersServlet extends HttpServlet{
-	
+@WebServlet("/findByIdVehicleReservations")
+public class FindByIdVehicleReservationServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
+	Reservation reservationedit = new Reservation();
+	
 	@Autowired
-	private ClientService clientService;
+	private VehicleService vehicleService;
 
 	@Override
 	public void init() throws ServletException {
 		super.init();
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
-	
+		
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
-		
-			
-			request.getRequestDispatcher("./WEB-INF/views/users/delete.jsp").forward(request, response);
+				try {
+					request.setAttribute("listVehicles",this.vehicleService.findAll());
+					request.getRequestDispatcher("./WEB-INF/views/rents/findByIdVehicle.jsp").forward(request, response);
+				} catch (ServiceException e) {
+					e.printStackTrace();
+				}
+				
 				
 	}
 	
@@ -40,10 +46,9 @@ public class DeleteUsersServlet extends HttpServlet{
 			response) throws ServletException, IOException {
 		
 			try {
-				request.setAttribute("listUsers",this.clientService.findAll());
-				request.getRequestDispatcher("./WEB-INF/views/users/list.jsp").forward(request, response);
+				request.setAttribute("listReservations",this.vehicleService.findResaByVehicleId(Integer.parseInt(request.getParameter("id"))));
+				request.getRequestDispatcher("./WEB-INF/views/rents/list.jsp").forward(request, response);
 			} catch (ServiceException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
 			
@@ -52,14 +57,6 @@ public class DeleteUsersServlet extends HttpServlet{
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
-		
-			String delete_id = request.getParameter("id");
-			
-			try {				
-				request.setAttribute("DeleteUsers",this.clientService.delete(clientService.findById(Short.parseShort(delete_id))));
-			} catch (ServiceException e1) {
-				e1.printStackTrace();
-			}
 			doGet2(request,response);
 			
 	}

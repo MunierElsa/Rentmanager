@@ -2,6 +2,7 @@ package com.epf.rentmanager.ui.servlets.user;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,10 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import com.epf.rentmanager.exception.ContrainteException;
 import com.epf.rentmanager.exception.ServiceException;
 import com.epf.rentmanager.model.Client;
 import com.epf.rentmanager.service.ClientService;
-import com.epf.rentmanager.service.VehicleService;
 
 @WebServlet("/editUsers")
 public class EditUsersServlet extends HttpServlet{
@@ -74,9 +75,12 @@ public class EditUsersServlet extends HttpServlet{
 			
 		try {
 			verifException();
+			verifContrainte();
 			request.setAttribute("EditUsers",this.clientService.edit(useredit));	
 		} catch (ServiceException e1) {
 			e1.printStackTrace();
+		} catch (ContrainteException e) {
+			e.printStackTrace();
 		}
 		doGet2(request,response);
 			
@@ -85,6 +89,25 @@ public class EditUsersServlet extends HttpServlet{
 	private void verifException() throws ServiceException {
 		if (useredit.getNom().equals("") || useredit.getPrenom().equals("")) {
 			throw new ServiceException();
+		}
+	}
+	
+private void verifContrainte() throws ContrainteException {
+		
+		long age = ChronoUnit.YEARS.between(useredit.getNaissance(), LocalDate.now());
+		
+		if (age < 18) {
+			throw new ContrainteException();
+		}
+		
+		try {
+			for (Client client : this.clientService.findAll()) {
+				if (useredit.getEmail().equals(client.getEmail())) {
+					throw new ContrainteException();
+				}
+			}
+		} catch (ServiceException e) {
+			e.printStackTrace();
 		}
 	}
 }

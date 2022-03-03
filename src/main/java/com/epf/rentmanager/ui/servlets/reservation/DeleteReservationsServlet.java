@@ -42,7 +42,7 @@ public class DeleteReservationsServlet extends HttpServlet{
 			response) throws ServletException, IOException {
 		
 			try {
-				request.setAttribute("listReservartions",this.vehicleService.findAll());
+				request.setAttribute("listReservartions",this.vehicleService.findAllResa());
 				request.getRequestDispatcher("./WEB-INF/views/rents/list.jsp").forward(request, response);
 			} catch (ServiceException e) {
 				// TODO Auto-generated catch block

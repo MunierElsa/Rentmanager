@@ -43,7 +43,6 @@ public class AddReservationsServlet extends HttpServlet{
 					request.setAttribute("listVehicles",this.vehicleService.findAll());
 					request.getRequestDispatcher("./WEB-INF/views/rents/create.jsp").forward(request, response);
 				} catch (ServiceException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -53,10 +52,9 @@ public class AddReservationsServlet extends HttpServlet{
 			response) throws ServletException, IOException {
 		
 			try {
-				request.setAttribute("listReservartions",this.vehicleService.findAll());
+				request.setAttribute("listReservations",this.vehicleService.findAllResa());
 				request.getRequestDispatcher("./WEB-INF/views/rents/list.jsp").forward(request, response);
 			} catch (ServiceException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
 			

@@ -42,10 +42,11 @@ public class IOUtils {
 	 * Lit un message sur l'entrée standard
 	 */
 	public static String readString() {
-		Scanner scanner = new Scanner(System.in);
-		String value = scanner.nextLine();
-		
-		return value;
+		try (Scanner scanner = new Scanner(System.in)) {
+			String value = scanner.nextLine();
+			
+			return value;
+		}
 	}
 	
 	/**

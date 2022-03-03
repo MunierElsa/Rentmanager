@@ -34,7 +34,7 @@
 									<!-- vous devez passer par les methodes getParameter de l'objet request, est sp�cifiant la valeur -->
 									<!-- de l'attribut "name" de l'input -->
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="id" name="id" placeholder="Id" required>
+                                        <input type="number" class="form-control" id="id" name="id" min="1" placeholder="Id" required>
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Modifications : </label></div> 

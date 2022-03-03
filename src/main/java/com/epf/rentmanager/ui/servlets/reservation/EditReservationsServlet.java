@@ -36,7 +36,6 @@ public class EditReservationsServlet extends HttpServlet{
 		super.init();
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 	}
-	Vehicle reservtaionedit = new Vehicle();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
@@ -56,7 +55,7 @@ public class EditReservationsServlet extends HttpServlet{
 			response) throws ServletException, IOException {
 		
 			try {
-				request.setAttribute("listReservartions",this.vehicleService.findAll());
+				request.setAttribute("listReservartions",this.vehicleService.findAllResa());
 				request.getRequestDispatcher("./WEB-INF/views/rents/list.jsp").forward(request, response);
 			} catch (ServiceException e) {
 				// TODO Auto-generated catch block

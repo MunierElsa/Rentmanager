@@ -18,6 +18,8 @@
                 <a class="btn btn-primary" href="${pageContext.request.contextPath}/createReservations">Ajouter</a>
                 <a class="btn btn-primary" href="${pageContext.request.contextPath}/editReservations">Editer</a>
                 <a class="btn btn-primary" href="${pageContext.request.contextPath}/deleteReservations">Supprimer</a>
+                <a class="btn btn-primary" href="${pageContext.request.contextPath}/findByIdClientReservations">Réservations par client</a>
+                <a class="btn btn-primary" href="${pageContext.request.contextPath}/findByIdVehicleReservations">Réservations par véhicule</a>
             </h1>
         </section>
 

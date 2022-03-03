@@ -2,6 +2,7 @@ package com.epf.rentmanager.ui.servlets.user;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,13 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import com.epf.rentmanager.exception.ContrainteException;
 import com.epf.rentmanager.exception.ServiceException;
 import com.epf.rentmanager.model.Client;
 import com.epf.rentmanager.service.ClientService;
-import com.epf.rentmanager.service.VehicleService;
 
 @WebServlet("/createUsers")
 public class AddUsersServlet extends HttpServlet{
@@ -73,6 +73,7 @@ public class AddUsersServlet extends HttpServlet{
 			
 			try {
 				verifException();
+				verifContrainte();
 				int id = 0;
 				for(int i = 0; i < clientService.findAll().size(); ++i) {
 					if(id < clientService.findAll().get(i).getId()) {
@@ -84,6 +85,9 @@ public class AddUsersServlet extends HttpServlet{
 				
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
+			} catch (ContrainteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			
 			doGet2(request,response);
@@ -93,6 +97,25 @@ public class AddUsersServlet extends HttpServlet{
 	private void verifException() throws ServiceException {
 		if (useradd.getNom().equals("") || useradd.getPrenom().equals("")) {
 			throw new ServiceException();
+		}
+	}
+	
+	private void verifContrainte() throws ContrainteException {
+		
+		long age = ChronoUnit.YEARS.between(useradd.getNaissance(), LocalDate.now());
+		
+		if (age < 18) {
+			throw new ContrainteException();
+		}
+		
+		try {
+			for (Client client : this.clientService.findAll()) {
+				if (useradd.getEmail().equals(client.getEmail())) {
+					throw new ContrainteException();
+				}
+			}
+		} catch (ServiceException e) {
+			e.printStackTrace();
 		}
 	}
 }
