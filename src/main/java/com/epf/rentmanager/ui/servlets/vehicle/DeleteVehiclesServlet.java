@@ -31,8 +31,13 @@ public class DeleteVehiclesServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
 		
+			try {
+				request.setAttribute("listVehicles",this.vehicleService.findAll());
+				request.getRequestDispatcher("./WEB-INF/views/vehicles/delete.jsp").forward(request, response);
+			} catch (ServiceException e) {
+				e.printStackTrace();
+			}
 			
-			request.getRequestDispatcher("./WEB-INF/views/vehicles/delete.jsp").forward(request, response);
 				
 	}
 	
@@ -43,7 +48,6 @@ public class DeleteVehiclesServlet extends HttpServlet{
 				request.setAttribute("listVehicles",this.vehicleService.findAll());
 				request.getRequestDispatcher("./WEB-INF/views/vehicles/list.jsp").forward(request, response);
 			} catch (ServiceException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
 			

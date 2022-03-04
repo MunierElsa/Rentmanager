@@ -34,18 +34,22 @@ public class DeleteReservationsServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
 		
+			try {
+				request.setAttribute("listReservations",this.vehicleService.findAllResa());
+				request.getRequestDispatcher("./WEB-INF/views/rents/delete.jsp").forward(request, response);
+			} catch (ServiceException e) {
+				e.printStackTrace();
+			}
 			
-			request.getRequestDispatcher("./WEB-INF/views/rents/delete.jsp").forward(request, response);
 				
 	}
 	protected void doGet2(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
 		
 			try {
-				request.setAttribute("listReservartions",this.vehicleService.findAllResa());
+				request.setAttribute("listReservations",this.vehicleService.findAllResa());
 				request.getRequestDispatcher("./WEB-INF/views/rents/list.jsp").forward(request, response);
 			} catch (ServiceException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
 			

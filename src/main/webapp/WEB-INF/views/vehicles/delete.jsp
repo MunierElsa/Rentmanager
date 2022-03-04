@@ -38,7 +38,11 @@
 									<!-- vous devez passer par les methodes getParameter de l'objet request, est sp�cifiant la valeur -->
 									<!-- de l'attribut "name" de l'input -->
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="id" name="id" placeholder="Id" required>
+                                        <select class="form-control" id="id" name="id">
+                                            <c:forEach items = "${listVehicles }" var="vehicle">
+                                				<option value="${vehicle.id}">${vehicle.id} - ${vehicle.constructeur} ${vehicle.modele}</option>
+                                			</c:forEach>
+                                        </select>
                                     </div>
                                 </div>
                                 <!--

@@ -30,7 +30,11 @@
                                 <div class="form-group">
                                     <label for="id" class="col-sm-2 control-label">Id</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="id" name="id" placeholder="Id" required>
+                                        <select class="form-control" id="id" name="id">
+                                            <c:forEach items = "${listReservations }" var="resa">
+                                				<option value="${resa.id}">${resa.id} - Client : ${resa.client_id} et Véhicule : ${resa.vehicle_id}</option>
+                                			</c:forEach>
+                                        </select>
                                     </div>
                                 </div>
                             <!-- /.box-body -->
