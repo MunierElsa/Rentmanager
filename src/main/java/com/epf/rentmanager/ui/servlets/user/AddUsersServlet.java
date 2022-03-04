@@ -86,7 +86,6 @@ public class AddUsersServlet extends HttpServlet{
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
 			} catch (ContrainteException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			

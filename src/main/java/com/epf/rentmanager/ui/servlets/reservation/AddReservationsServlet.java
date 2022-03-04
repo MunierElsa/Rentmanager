@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import com.epf.rentmanager.exception.ContrainteException;
 import com.epf.rentmanager.exception.ServiceException;
 import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.service.ClientService;
@@ -78,20 +79,41 @@ public class AddReservationsServlet extends HttpServlet{
 			reservationadd.setFin(fin_date);
 			
 			try {
+				verifContrainte();
 				int id = 0;
 				for(int i = 0; i < vehicleService.findAllResa().size(); ++i) {
 					if(id < vehicleService.findAllResa().get(i).getId()) {
 						id = vehicleService.findAllResa().get(i).getId();
 					} else ;
 				}
-				reservationadd.setId(id);
+				reservationadd.setId(id);				
 				request.setAttribute("CreateReservations",this.vehicleService.createResa(reservationadd));	
 				
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
+			} catch (ContrainteException e) {
+				e.printStackTrace();
 			}
+			
 			doGet2(request,response);
 			
+	}
+	
+	private void verifContrainte() throws ContrainteException {
+		try {
+			for (Reservation resa : this.vehicleService.findAllResa()) {
+				if (reservationadd.getVehicle_id() == resa.getVehicle_id()) {
+					if (reservationadd.getDebut().isAfter(resa.getDebut()) && reservationadd.getDebut().isBefore(resa.getFin())) {
+						throw new ContrainteException();
+					}
+					if (reservationadd.getDebut().isBefore(resa.getDebut()) && reservationadd.getFin().isAfter(resa.getDebut())) {
+						throw new ContrainteException();
+					}
+				}
+			}
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
