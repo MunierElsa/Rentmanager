@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.epf.rentmanager.exception.ServiceException;
+import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.service.VehicleService;
 
 @WebServlet("/deleteVehicles")
@@ -19,6 +20,8 @@ public class DeleteVehiclesServlet extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
 
+	String delete_id;
+	
 	@Autowired
 	private VehicleService vehicleService;
 
@@ -57,16 +60,31 @@ public class DeleteVehiclesServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
 		
-			String delete_id = request.getParameter("id");
+			delete_id = request.getParameter("id");
 			
 			try {
-				
+				suppressionResa();
 				request.setAttribute("DeleteVehicles",this.vehicleService.delete(vehicleService.findById(Short.parseShort(delete_id))));
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
 			}
 			doGet2(request,response);
 			
+	}
+	
+	//Suppression des réservations associées au véhicule supprimé
+	private void suppressionResa() {
+		try {
+			for (Reservation resa : this.vehicleService.findAllResa()) {
+				if (Short.parseShort(delete_id) == resa.getVehicle_id()) {
+					this.vehicleService.deleteResa(resa);
+				}
+			}
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

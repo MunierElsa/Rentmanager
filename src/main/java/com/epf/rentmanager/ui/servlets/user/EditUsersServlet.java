@@ -94,16 +94,17 @@ public class EditUsersServlet extends HttpServlet{
 	
 private void verifContrainte() throws ContrainteException {
 		
+		//Un client n'ayant pas 18 ans ne peut pas être créé
 		long age = ChronoUnit.YEARS.between(useredit.getNaissance(), LocalDate.now());
-		
 		if (age < 18) {
-			throw new ContrainteException();
+			throw new ContrainteException("Un client n'ayant pas 18 ans ne peut pas être créé");
 		}
 		
+		//Un client ayant une adresse mail déjà prise ne peut pas être créé
 		try {
 			for (Client client : this.clientService.findAll()) {
 				if (useredit.getEmail().equals(client.getEmail())) {
-					throw new ContrainteException();
+					throw new ContrainteException("Un client ayant une adresse mail déjà prise ne peut pas être créé");
 				}
 			}
 		} catch (ServiceException e) {

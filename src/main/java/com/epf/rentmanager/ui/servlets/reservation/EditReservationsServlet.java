@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import com.epf.rentmanager.exception.ContrainteException;
 import com.epf.rentmanager.exception.ServiceException;
 import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.service.ClientService;
@@ -84,11 +85,36 @@ public class EditReservationsServlet extends HttpServlet{
 			
 			
 			try {
+				verifContrainte();
 				request.setAttribute("EditReservations",this.vehicleService.editResa(reservationedit));	
-			} catch (ServiceException e1) {
+			} catch (ServiceException | ContrainteException e1) {
 				e1.printStackTrace();
 			}
 			doGet2(request,response);
 			
+	}
+	
+	private void verifContrainte() throws ContrainteException {
+		
+		//La voiture ne peut pas être réservée 2 fois le même jour
+		try { 
+			for (Reservation resa : this.vehicleService.findAllResa()) {
+				if (reservationedit.getVehicle_id() == resa.getVehicle_id()) {
+					if (reservationedit.getDebut().isAfter(resa.getDebut()) && reservationedit.getDebut().isBefore(resa.getFin())) {
+						throw new ContrainteException("La voiture ne peut pas être réservée 2 fois le même jour");
+					}
+					if (reservationedit.getDebut().isBefore(resa.getDebut()) && reservationedit.getFin().isAfter(resa.getDebut())) {
+						throw new ContrainteException("La voiture ne peut pas être réservée 2 fois le même jour");
+					}
+				}
+			}
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+		
+		//La voiture ne peut pas être réservée plus de 7 jours de suite par le même utilisateur
+		if(reservationedit.getDebut().compareTo(reservationedit.getFin()) < -7) {
+			throw new ContrainteException("La voiture ne peut pas être réservée plus de 7 jours de suite par le même utilisateur");
+		}
 	}
 }

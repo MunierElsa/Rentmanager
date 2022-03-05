@@ -100,19 +100,26 @@ public class AddReservationsServlet extends HttpServlet{
 	}
 	
 	private void verifContrainte() throws ContrainteException {
-		try {
+		
+		//La voiture ne peut pas être réservée 2 fois le même jour
+		try { 
 			for (Reservation resa : this.vehicleService.findAllResa()) {
 				if (reservationadd.getVehicle_id() == resa.getVehicle_id()) {
 					if (reservationadd.getDebut().isAfter(resa.getDebut()) && reservationadd.getDebut().isBefore(resa.getFin())) {
-						throw new ContrainteException();
+						throw new ContrainteException("La voiture ne peut pas être réservée 2 fois le même jour");
 					}
 					if (reservationadd.getDebut().isBefore(resa.getDebut()) && reservationadd.getFin().isAfter(resa.getDebut())) {
-						throw new ContrainteException();
+						throw new ContrainteException("La voiture ne peut pas être réservée 2 fois le même jour");
 					}
 				}
 			}
 		} catch (ServiceException e) {
 			e.printStackTrace();
+		}
+		
+		//La voiture ne peut pas être réservée plus de 7 jours de suite par le même utilisateur
+		if(reservationadd.getDebut().compareTo(reservationadd.getFin()) < -7) {
+			throw new ContrainteException("La voiture ne peut pas être réservée plus de 7 jours de suite par le même utilisateur");
 		}
 	}
 
