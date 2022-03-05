@@ -71,8 +71,6 @@ public class AddVehiclesServlet extends HttpServlet{
 				}
 				vehicleadd.setId(id);
 				
-				verifException();
-				
 				request.setAttribute("CreateVehicles",this.vehicleService.create(vehicleadd));	
 				
 			} catch (ServiceException e1) {
@@ -81,12 +79,5 @@ public class AddVehiclesServlet extends HttpServlet{
 			doGet2(request,response);
 			
 	}
-	
-	private void verifException() throws ServiceException {
-		if (vehicleadd.getConstructeur().equals("") || vehicleadd.getNb_places() < 1) {
-			throw new ServiceException();
-		}
-	}
-	
-	
+		
 }

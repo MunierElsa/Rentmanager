@@ -63,7 +63,6 @@ public class DeleteVehiclesServlet extends HttpServlet{
 			delete_id = request.getParameter("id");
 			
 			try {
-				suppressionResa();
 				request.setAttribute("DeleteVehicles",this.vehicleService.delete(vehicleService.findById(Short.parseShort(delete_id))));
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
@@ -72,19 +71,5 @@ public class DeleteVehiclesServlet extends HttpServlet{
 			
 	}
 	
-	//Suppression des réservations associées au véhicule supprimé
-	private void suppressionResa() {
-		try {
-			for (Reservation resa : this.vehicleService.findAllResa()) {
-				if (Short.parseShort(delete_id) == resa.getVehicle_id()) {
-					this.vehicleService.deleteResa(resa);
-				}
-			}
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		}
-	}
 
 }

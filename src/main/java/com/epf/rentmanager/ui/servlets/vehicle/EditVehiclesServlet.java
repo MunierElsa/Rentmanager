@@ -63,9 +63,7 @@ public class EditVehiclesServlet extends HttpServlet{
 			vehiculeedit.setNb_places(Short.valueOf(nb_places));
 			vehiculeedit.setId(Integer.valueOf(id));
 			
-			
 			try {
-				verifException();
 				request.setAttribute("EditVehicles",this.vehicleService.edit(vehiculeedit));	
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
@@ -74,10 +72,5 @@ public class EditVehiclesServlet extends HttpServlet{
 			
 	}
 	
-	private void verifException() throws ServiceException {
-		if (vehiculeedit.getConstructeur().equals("") || vehiculeedit.getNb_places() < 1) {
-			throw new ServiceException();
-		}
-	}
 
 }

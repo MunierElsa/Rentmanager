@@ -67,7 +67,6 @@ public class DeleteUsersServlet extends HttpServlet{
 			delete_id = request.getParameter("id");
 			
 			try {	
-				suppressionResa();
 				request.setAttribute("DeleteUsers",this.clientService.delete(clientService.findById(Short.parseShort(delete_id))));
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
@@ -76,19 +75,6 @@ public class DeleteUsersServlet extends HttpServlet{
 			
 	}
 	
-	//Suppression des réservations associées au client supprimé
-	private void suppressionResa() {
-		try {
-			for (Reservation resa : this.vehicleService.findAllResa()) {
-				if (Short.parseShort(delete_id) == resa.getClient_id()) {
-					this.vehicleService.deleteResa(resa);
-				}
-			}
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		}
-	}
+	
 
 }
