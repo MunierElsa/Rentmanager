@@ -17,6 +17,9 @@ Les fonctionnalités suivantes ont été développées :
 + Lister toutes les Réservations associées à un Client donné.
 + Lister toutes les Réservations associées à un Véhicule donné.
 + Supprimer une Réservation.
++ Pouvoir modifier un Client.
++ Pouvoir modifier un Véhicule.
++ Pouvoir modifier une Réservation
 
 Les contraintes suivantes ont été développées :
 - Les champs nom, prénom, email et date de naissance sont obligatoires à la création d'un client

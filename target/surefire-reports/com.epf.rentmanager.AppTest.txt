@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: com.epf.rentmanager.AppTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.073 s <<< FAILURE! - in com.epf.rentmanager.AppTest
+shouldAnswerWithTrue2(com.epf.rentmanager.AppTest)  Time elapsed: 0.024 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown ==> expected: <com.epf.rentmanager.exception.ContrainteException> but was: <java.lang.NullPointerException>
+	at com.epf.rentmanager.AppTest.shouldAnswerWithTrue2(AppTest.java:40)
+Caused by: java.lang.NullPointerException: Cannot invoke "com.epf.rentmanager.dao.ClientDao.create(com.epf.rentmanager.model.Client)" because "this.clientDao" is null
+	at com.epf.rentmanager.AppTest.lambda$0(AppTest.java:40)
+	at com.epf.rentmanager.AppTest.shouldAnswerWithTrue2(AppTest.java:40)
+

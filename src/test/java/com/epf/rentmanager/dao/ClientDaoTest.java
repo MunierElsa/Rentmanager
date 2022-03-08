@@ -40,7 +40,8 @@ public class ClientDaoTest {
         
         // Then
         assertEquals(0, clientDao.create(IllegalUser));
-        assertThrows(SQLException.class, ()->clientDao.create(IllegalUser));
+        assertEquals(1, clientDao.create(LegalUser));
+        //assertThrows(SQLException.class, ()->clientDao.create(IllegalUser));
     }
     	       
     @Test

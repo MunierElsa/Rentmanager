@@ -24,7 +24,7 @@ import com.epf.rentmanager.service.VehicleService;
 @Repository
 public class ClientDao {
 	
-	public ClientDao() {}
+	private ClientDao() {}
 	
 	private static final String CREATE_CLIENT_QUERY = "INSERT INTO Client(nom, prenom, email, naissance) VALUES(?, ?, ?, ?);";
 	private static final String DELETE_CLIENT_QUERY = "DELETE FROM Client WHERE id=?;";
