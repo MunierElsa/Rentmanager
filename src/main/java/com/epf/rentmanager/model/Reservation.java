@@ -1,6 +1,10 @@
 package com.epf.rentmanager.model;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import com.epf.rentmanager.exception.ContrainteException;
+import com.epf.rentmanager.exception.ServiceException;
 
 public class Reservation {
 	private int id;
@@ -15,6 +19,13 @@ public class Reservation {
 	
 	public Reservation(int id, int client_id, int vehicle_id, LocalDate debut, LocalDate fin) {
 		this.id = id;
+		this.client_id = client_id;
+		this.vehicle_id = vehicle_id;
+		this.debut = debut;
+		this.fin = fin;
+	}
+	
+	public Reservation(int client_id, int vehicle_id, LocalDate debut, LocalDate fin) {
 		this.client_id = client_id;
 		this.vehicle_id = vehicle_id;
 		this.debut = debut;
@@ -65,6 +76,31 @@ public class Reservation {
 
 	public void setFin(LocalDate fin) {
 		this.fin = fin;
+	}
+	
+	public static boolean resaLegal(Reservation reservation, List<Reservation> liste) throws ContrainteException, ServiceException {
+		//La voiture ne peut pas être réservée 2 fois le même jour
+		for (Reservation resa : liste) {
+			if (reservation.getVehicle_id() == resa.getVehicle_id()) {
+				if (reservation.getDebut().isAfter(resa.getDebut()) && reservation.getDebut().isBefore(resa.getFin())) {
+					return false;
+				}
+				if (reservation.getDebut().isBefore(resa.getDebut()) && reservation.getFin().isAfter(resa.getDebut())) {
+					return false;
+				}
+				if (reservation.getDebut().equals(resa.getDebut())) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	
+	public static boolean resa7DaysLegal(Reservation reservation) throws ContrainteException{
+		//La voiture ne peut pas être réservée plus de 7 jours de suite par le même utilisateur
+		if(reservation.getDebut().compareTo(reservation.getFin()) < -7) {
+			return false;
+		} else return true;
 	}
 	
 	

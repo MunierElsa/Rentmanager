@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: com.epf.rentmanager.AppTest
+Test set: com.epf.rentmanager.VehicleTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 s - in com.epf.rentmanager.AppTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in com.epf.rentmanager.VehicleTest

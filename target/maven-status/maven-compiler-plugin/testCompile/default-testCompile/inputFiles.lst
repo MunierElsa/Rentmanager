@@ -1,6 +1,4 @@
 C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\test\java\com\epf\rentmanager\AppTest.java
-C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\test\java\com\epf\rentmanager\dao\VehicleDaoTest.java
-C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\test\java\com\epf\rentmanager\dao\ReservationDaoTest.java
-C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\test\java\com\epf\rentmanager\service\ClientServiceTest.java
-C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\test\java\com\epf\rentmanager\dao\ClientDaoTest.java
-C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\test\java\com\epf\rentmanager\service\VehicleServiceTest.java
+C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\test\java\com\epf\rentmanager\ClientTest.java
+C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\test\java\com\epf\rentmanager\VehicleTest.java
+C:\Users\elsam\Documents\Cours EPF 4A\Java\Projet\rentmanager\src\test\java\com\epf\rentmanager\ReservationTest.java

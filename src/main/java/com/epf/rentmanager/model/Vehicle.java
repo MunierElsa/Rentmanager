@@ -1,5 +1,10 @@
 package com.epf.rentmanager.model;
 
+import java.util.List;
+
+import com.epf.rentmanager.exception.ContrainteException;
+import com.epf.rentmanager.exception.ServiceException;
+
 public class Vehicle {
 	private int id;
 	private String constructeur;
@@ -18,7 +23,11 @@ public class Vehicle {
 		this.nb_places = nb_places;
 	}
 	
-
+	public Vehicle(String constructeur, short nb_places) {
+		this.constructeur = constructeur;
+		this.nb_places = nb_places;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -61,5 +70,12 @@ public class Vehicle {
 
 	public String toString() {
 		return "id : " + id + "\nconstructeur : " + constructeur + "\nnb_places : " + nb_places;
+	}
+	
+	public static boolean nbPlacesLegal(Vehicle vehicle) throws ContrainteException{
+		//La voiture doit avoir entre 2 et 9 places
+		if(vehicle.getNb_places() < 2 || vehicle.getNb_places() > 9) {
+			return false;
+		} else return true;
 	}
 }

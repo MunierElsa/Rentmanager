@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import com.epf.rentmanager.exception.ContrainteException;
 import com.epf.rentmanager.exception.ServiceException;
 import com.epf.rentmanager.model.Vehicle;
 import com.epf.rentmanager.service.VehicleService;
@@ -75,6 +76,9 @@ public class AddVehiclesServlet extends HttpServlet{
 				
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
+			} catch (ContrainteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			doGet2(request,response);
 			

@@ -58,7 +58,6 @@ public class EditReservationsServlet extends HttpServlet{
 				request.setAttribute("listReservartions",this.vehicleService.findAllResa());
 				request.getRequestDispatcher("./WEB-INF/views/rents/list.jsp").forward(request, response);
 			} catch (ServiceException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
 			
@@ -87,6 +86,9 @@ public class EditReservationsServlet extends HttpServlet{
 				request.setAttribute("EditReservations",this.vehicleService.editResa(reservationedit));	
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
+			} catch (ContrainteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			doGet2(request,response);
 			

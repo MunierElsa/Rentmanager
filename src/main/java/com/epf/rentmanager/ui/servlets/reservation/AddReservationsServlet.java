@@ -88,7 +88,7 @@ public class AddReservationsServlet extends HttpServlet{
 				reservationadd.setId(id);				
 				request.setAttribute("CreateReservations",this.vehicleService.createResa(reservationadd));	
 				
-			} catch (ServiceException e1) {
+			} catch (ServiceException | ContrainteException e1) {
 				e1.printStackTrace();
 			}
 			doGet2(request,response);

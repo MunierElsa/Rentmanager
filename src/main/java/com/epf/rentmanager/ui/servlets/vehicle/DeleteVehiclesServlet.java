@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.epf.rentmanager.exception.ServiceException;
-import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.service.VehicleService;
 
 @WebServlet("/deleteVehicles")
