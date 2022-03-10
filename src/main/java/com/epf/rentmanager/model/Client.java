@@ -4,10 +4,6 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-import com.epf.rentmanager.exception.ContrainteException;
-import com.epf.rentmanager.exception.DaoException;
-import com.epf.rentmanager.exception.ServiceException;
-
 public class Client {
 	private int id;
 	private String nom;
@@ -106,9 +102,11 @@ public class Client {
 	public static boolean emailLegal(Client client, List<Client> liste){
 		//Un client ayant une adresse mail deja prise ne peut pas être cree
 			for (Client clientliste : liste) {
-				if (client.getEmail().equals(clientliste.getEmail())) {
+				if(client.getId() != clientliste.getId()) {
+					if (client.getEmail().equals(clientliste.getEmail())) {
 						return false;
-				} 
+					} 
+				}
 			} 
 			return true;
 	}

@@ -34,7 +34,11 @@
 									<!-- vous devez passer par les methodes getParameter de l'objet request, est sp�cifiant la valeur -->
 									<!-- de l'attribut "name" de l'input -->
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="id" name="id" min="1" placeholder="Id" required>
+                                        <select class="form-control" id="id" name="id">
+                                            <c:forEach items = "${listUsers }" var="user">
+                                				<option value="${user.id}">${user.id} - ${user.prenom} ${user.nom} / ${user.email} / ${user.naissance}</option>
+                                			</c:forEach>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Modifications : </label></div> 

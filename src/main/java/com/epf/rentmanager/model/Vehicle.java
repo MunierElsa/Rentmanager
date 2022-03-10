@@ -1,17 +1,11 @@
 package com.epf.rentmanager.model;
 
-import java.util.List;
-
 import com.epf.rentmanager.exception.ContrainteException;
-import com.epf.rentmanager.exception.ServiceException;
 
 public class Vehicle {
 	private int id;
 	private String constructeur;
-	private String modele;
 	private short nb_places;
-	
-	
 	
 	public Vehicle() {
 	}
@@ -46,17 +40,6 @@ public class Vehicle {
 	public void setConstructeur(String constructeur) {
 		this.constructeur = constructeur;
 	}
-
-
-	public String getModele() {
-		return modele;
-	}
-
-
-	public void setModele(String modele) {
-		this.modele = modele;
-	}
-
 
 	public short getNb_places() {
 		return nb_places;

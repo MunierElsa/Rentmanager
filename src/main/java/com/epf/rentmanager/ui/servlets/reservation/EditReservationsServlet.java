@@ -43,9 +43,9 @@ public class EditReservationsServlet extends HttpServlet{
 			try {
 				request.setAttribute("listUsers",this.clientService.findAll());
 				request.setAttribute("listVehicles",this.vehicleService.findAll());
+				request.setAttribute("listReservations",this.vehicleService.findAllResa());
 				request.getRequestDispatcher("./WEB-INF/views/rents/edit.jsp").forward(request, response);
 			} catch (ServiceException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 				
@@ -55,7 +55,8 @@ public class EditReservationsServlet extends HttpServlet{
 			response) throws ServletException, IOException {
 		
 			try {
-				request.setAttribute("listReservartions",this.vehicleService.findAllResa());
+				
+				request.setAttribute("listReservations",this.vehicleService.findAllResa());
 				request.getRequestDispatcher("./WEB-INF/views/rents/list.jsp").forward(request, response);
 			} catch (ServiceException e) {
 				e.printStackTrace();
@@ -87,7 +88,6 @@ public class EditReservationsServlet extends HttpServlet{
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
 			} catch (ContrainteException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			doGet2(request,response);

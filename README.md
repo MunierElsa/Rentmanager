@@ -36,6 +36,7 @@ Maven et Spring sont mis en place
 ___
 ### Problèmes rencontrés:
  
-Choix de pas mettre modèle
-Choix de mettre des boutons en haut des listes et pas passé par les boutons faits car avec href c'est dangereux
-Choix de mettre des listes
+Voici les différents problèmes que j'ai rencontré et comment je les ai résolu :
+- D'abord, j'ai décidé, en cohérence avec la base de donnée fournie, de ne pas rajouter de modèle pour un véhicule.
+- Ensuite, pour éditer ou supprimer un client, un véhicule ou une réservation, j'ai décidé de mettre la liste avec les détails de chaque objet pour éviter les confusions.
+- Enfin, j'ai choisi de changer les boutons mis initialement dans les jsp de l'édition et la suppression des objets clients, réservations et véhicules car pour faire passer l'Id des objets, il aurait fallu le passer via le href ce qui n'est pas sécuritaire. J'ai préféré des boutons comme celui du ajouter et que l'utilisateur sélectionne directement l'objet parmi une liste.

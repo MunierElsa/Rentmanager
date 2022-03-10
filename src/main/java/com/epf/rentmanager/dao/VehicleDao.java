@@ -11,11 +11,8 @@ import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
 import com.epf.rentmanager.exception.DaoException;
-import com.epf.rentmanager.exception.ServiceException;
-import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.model.Vehicle;
 import com.epf.rentmanager.persistence.ConnectionManager;
-import com.epf.rentmanager.service.VehicleService;
 
 @Repository
 public class VehicleDao {

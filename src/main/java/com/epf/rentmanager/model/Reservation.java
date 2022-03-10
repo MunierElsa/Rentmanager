@@ -81,15 +81,17 @@ public class Reservation {
 	public static boolean resaLegal(Reservation reservation, List<Reservation> liste) throws ContrainteException, ServiceException {
 		//La voiture ne peut pas être réservée 2 fois le même jour
 		for (Reservation resa : liste) {
-			if (reservation.getVehicle_id() == resa.getVehicle_id()) {
-				if (reservation.getDebut().isAfter(resa.getDebut()) && reservation.getDebut().isBefore(resa.getFin())) {
-					return false;
-				}
-				if (reservation.getDebut().isBefore(resa.getDebut()) && reservation.getFin().isAfter(resa.getDebut())) {
-					return false;
-				}
-				if (reservation.getDebut().equals(resa.getDebut())) {
-					return false;
+			if(reservation.getId() != resa.getId()) {
+				if (reservation.getVehicle_id() == resa.getVehicle_id()) {
+					if (reservation.getDebut().isAfter(resa.getDebut()) && reservation.getDebut().isBefore(resa.getFin())) {
+						return false;
+					}
+					if (reservation.getDebut().isBefore(resa.getDebut()) && reservation.getFin().isAfter(resa.getDebut())) {
+						return false;
+					}
+					if (reservation.getDebut().equals(resa.getDebut())) {
+						return false;
+					}
 				}
 			}
 		}
@@ -102,6 +104,5 @@ public class Reservation {
 			return false;
 		} else return true;
 	}
-	
 	
 }

@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.epf.rentmanager.exception.ServiceException;
+import com.epf.rentmanager.model.Reservation;
 import com.epf.rentmanager.service.ClientService;
+import com.epf.rentmanager.service.VehicleService;
 
 @WebServlet("/deleteUsers")
 public class DeleteUsersServlet extends HttpServlet{
@@ -23,6 +25,8 @@ public class DeleteUsersServlet extends HttpServlet{
 
 	@Autowired
 	private ClientService clientService;
+	@Autowired
+	private VehicleService vehicleService;
 
 	@Override
 	public void init() throws ServletException {
@@ -63,12 +67,26 @@ public class DeleteUsersServlet extends HttpServlet{
 			delete_id = request.getParameter("id");
 			
 			try {	
+				suppressionResa(Integer.parseInt(delete_id));
 				request.setAttribute("DeleteUsers",this.clientService.delete(clientService.findById(Short.parseShort(delete_id))));
 			} catch (ServiceException e1) {
 				e1.printStackTrace();
 			}
 			doGet2(request,response);
 			
+	}
+	
+	//Suppression des réservations associées au client supprimé
+	private void suppressionResa(int delete_id) {
+		try {
+			for (Reservation resa : this.vehicleService.findAllResa()) {
+				if (delete_id == resa.getClient_id()) {
+					this.vehicleService.deleteResa(resa);
+				}
+			}
+		} catch (NumberFormatException | ServiceException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	

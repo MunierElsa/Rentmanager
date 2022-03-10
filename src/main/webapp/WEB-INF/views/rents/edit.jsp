@@ -34,7 +34,11 @@
 									<!-- vous devez passer par les methodes getParameter de l'objet request, est spï¿½cifiant la valeur -->
 									<!-- de l'attribut "name" de l'input -->
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="id" name="id" min="1" placeholder="Id" required>
+                                        <select class="form-control" id="id" name="id">
+                                            <c:forEach items = "${listReservations }" var="resa">
+                                				<option value="${resa.id}">${resa.id} - Client : ${resa.client_id} et Véhicule : ${resa.vehicle_id} / Début : ${resa.debut} et Fin : ${resa.fin}</option>
+                                			</c:forEach>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Modifications : </label></div> 
@@ -45,7 +49,7 @@
                                     <div class="col-sm-10">
                                         <select class="form-control" id="car" name="car">
                                         	<c:forEach items = "${listVehicles}" var="vehicle">
-                                				<option value="${vehicle.id}">${vehicle.constructeur} ${vehicle.modele}</option>
+                                				<option value="${vehicle.id}">${vehicle.constructeur} </option>
                                 			</c:forEach>
                                         </select>
                                     </div>

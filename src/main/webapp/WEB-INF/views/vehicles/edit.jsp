@@ -37,8 +37,12 @@
 									<!-- Pour r�up�rer la valeur rentr�e dans un champ input de cette jsp au niveau de votre servlet -->
 									<!-- vous devez passer par les methodes getParameter de l'objet request, est sp�cifiant la valeur -->
 									<!-- de l'attribut "name" de l'input -->
-                                    <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="id" name="id" min="1" placeholder="Id" required>
+                                     <div class="col-sm-10">
+                                        <select class="form-control" id="id" name="id">
+                                            <c:forEach items = "${listVehicles }" var="vehicle">
+                                				<option value="${vehicle.id}">${vehicle.id} - ${vehicle.constructeur} / ${vehicle.nb_places}</option>
+                                			</c:forEach>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-sm-2 control-label">Modifications : </label></div> 
@@ -60,18 +64,6 @@
                                         <input type="number" class="form-control" id="seats" name="seats" min="2" max="9" placeholder="Nombre de places" required>
                                     </div>
                                 </div>
-                                <!--
-                                <div class="form-group">
-                                    <label for="owner" class="col-sm-2 control-label">Propriétaire</label>
-
-                                    <div class="col-sm-10">
-                                        <select class="form-control" id="owner" name="owner">
-                                            <option value="1">John Doe</option>
-                                            <option value="2">Jane Doe</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                -->
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">

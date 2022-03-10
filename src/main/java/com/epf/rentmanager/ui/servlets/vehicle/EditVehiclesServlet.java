@@ -34,9 +34,13 @@ public class EditVehiclesServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
 		
-			request.getRequestDispatcher("./WEB-INF/views/vehicles/edit.jsp").forward(request, response);
+			try {
+				request.setAttribute("listVehicles",this.vehicleService.findAll());
+				request.getRequestDispatcher("./WEB-INF/views/vehicles/edit.jsp").forward(request, response);
+			} catch (ServiceException e) {
+				e.printStackTrace();
+			}
 			
-				
 	}
 	
 	protected void doGet2(HttpServletRequest request, HttpServletResponse

@@ -214,18 +214,18 @@ public class VehicleService {
 	private void verifContrainte(Reservation reservation) throws ContrainteException, ServiceException {
 		
 		//La voiture ne peut pas être réservée 2 fois le même jour
-		if (!reservation.resaLegal(reservation,this.findAllResa())) {
+		if (!Reservation.resaLegal(reservation,this.findAllResa())) {
 				throw new ContrainteException("La voiture ne peut pas etre reservee 2 fois le meme jour");
 		}
 		
 		//La voiture ne peut pas être réservée plus de 7 jours de suite par le même utilisateur
-		if(!reservation.resa7DaysLegal(reservation)) {
+		if(!Reservation.resa7DaysLegal(reservation)) {
 			throw new ContrainteException("La voiture ne peut pas etre reservee plus de 7 jours de suite par le meme utilisateur");
 		}
 	}
 	private void verifContrainte(Vehicle vehicle) throws ContrainteException, ServiceException {
 		//La voiture doit avoir entre 2 et 9 places
-		if(!vehicle.nbPlacesLegal(vehicle)) {
+		if(!Vehicle.nbPlacesLegal(vehicle)) {
 			throw new ContrainteException("La voiture doit avoir entre 2 et 9 places");
 		}
 	}

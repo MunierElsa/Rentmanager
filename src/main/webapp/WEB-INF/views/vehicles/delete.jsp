@@ -40,7 +40,7 @@
                                     <div class="col-sm-10">
                                         <select class="form-control" id="id" name="id">
                                             <c:forEach items = "${listVehicles }" var="vehicle">
-                                				<option value="${vehicle.id}">${vehicle.id} - ${vehicle.constructeur} ${vehicle.modele}</option>
+                                				<option value="${vehicle.id}">${vehicle.id} - ${vehicle.constructeur}</option>
                                 			</c:forEach>
                                         </select>
                                     </div>

@@ -34,8 +34,13 @@ public class EditUsersServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse
 			response) throws ServletException, IOException {
 		
-			
+		try {
+			request.setAttribute("listUsers",this.clientService.findAll());
 			request.getRequestDispatcher("./WEB-INF/views/users/edit.jsp").forward(request, response);
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+			
 				
 	}
 	
